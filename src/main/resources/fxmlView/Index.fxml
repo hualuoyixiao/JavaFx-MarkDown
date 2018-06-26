@@ -32,7 +32,7 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="帮助">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#markDownHelpClicked" text="帮助" />
+                  <MenuItem mnemonicParsing="false" onAction="#markDownHelpClicked" text="简单例子" />
                   <MenuItem mnemonicParsing="false" onAction="#aboutClicked" text="关于" />
                </items>
             </Menu>

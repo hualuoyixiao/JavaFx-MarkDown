@@ -1,9 +1,11 @@
 package cn.linchaokun.markdown.controller;
 
+import cn.linchaokun.markdown.constant.HelpDocConstant;
 import cn.linchaokun.markdown.io.XML;
 import cn.linchaokun.markdown.ui.MyTab;
 import cn.linchaokun.markdown.ui.panes.AboutPane;
 import cn.linchaokun.markdown.ui.panes.OptionsPane;
+import cn.linchaokun.markdown.utils.HelpUtil;
 import cn.linchaokun.markdown.utils.SystemUtil;
 import cn.linchaokun.markdown.utils.Utilities;
 import cn.linchaokun.markdown.utils.VariablesToSave;
@@ -302,30 +304,9 @@ public class IndexController implements Initializable {
      * @param actionEvent
      */
     public void markDownHelpClicked(ActionEvent actionEvent) {
-        MyTab examplesTab = new MyTab("Examples", tabPane, colorTheme);
 
-        //SplitPane splitPane = new SplitPane();
-        JFXTextArea textArea = new JFXTextArea();
-        //textArea.textProperty().addListener(o -> Utilities.reparse(textArea.getText(), webView));
+        HelpUtil.creHelpDoc("Examples",tabPane, colorTheme,HelpDocConstant.SIMPLE);
 
-        //splitPane.getItems().add(0, textArea);
-        //splitPane.getItems().add(1, webView);
-
-        examplesTab.setTextArea(textArea);
-
-
-        tabPane.getTabs().add(examplesTab);
-        tabPane.getSelectionModel().select(examplesTab);
-        textArea.setText("# Title 1\n\n" +
-                "## Title 2\n\n" +
-                "### Title 3\n\n" +
-                "[link](https://github.com/mayuso/JMarkPad)\n\n" +
-                "List:\n" +
-                "* item 1\n" +
-                "* item 2\n" +
-                "* item 3\n\n" +
-                "**bold**\n\n" +
-                "*italics*\n\n");
 
     }
 
