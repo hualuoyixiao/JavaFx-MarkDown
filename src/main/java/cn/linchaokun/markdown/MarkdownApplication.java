@@ -34,9 +34,4 @@ public class MarkdownApplication extends AbstractJavaFxApplicationSupport {
     }
 
 
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        System.out.println("hahah");
-    }
 }

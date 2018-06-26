@@ -1,5 +1,6 @@
 package cn.linchaokun.markdown.io;
 
+import cn.linchaokun.markdown.utils.SystemUtil;
 import cn.linchaokun.markdown.utils.VariablesToSave;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -95,7 +96,12 @@ public class XML {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(new File("jmarkpad.xml"));
+
+            File file = new File("/" + SystemUtil.getUserHome() + "/jmarkpad.xml");
+            if(!file.getParentFile().exists()){
+                file.getParentFile().mkdirs();
+            }
+            StreamResult result = new StreamResult(file);
 
 
             transformer.transform(source, result);

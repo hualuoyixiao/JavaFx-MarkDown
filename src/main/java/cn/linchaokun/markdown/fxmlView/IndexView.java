@@ -13,13 +13,11 @@ import javafx.scene.Parent;
  */
 @FXMLView(value = "/fxmlView/Index.fxml")
 public class IndexView extends AbstractFxmlView {
-    public IndexView() throws Exception {
-        GUIState.getStage().setTitle("MarkDown编辑器  By:埖落一笑");//修改标题国际化
-    }
 
     @Override
     public Parent getView() {
-        JFXDecorator decorator = JavaFxViewUtil.getJFXDecorator(GUIState.getStage(),GUIState.getStage().getTitle(),"/images/icon.jpg",super.getView());
+        GUIState.getStage().setTitle("FxMarkDown编辑器  By:埖落一笑");//修改标题国际化
+        JFXDecorator decorator = JavaFxViewUtil.getJFXDecorator(GUIState.getStage(),GUIState.getStage().getTitle(),"/images/icon.png",super.getView());
         decorator.setOnCloseButtonAction(()->{System.exit(0);});
 
         IndexController.refreshThemeDecorator(decorator);

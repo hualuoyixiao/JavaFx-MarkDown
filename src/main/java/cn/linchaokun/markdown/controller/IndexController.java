@@ -4,6 +4,7 @@ import cn.linchaokun.markdown.io.XML;
 import cn.linchaokun.markdown.ui.MyTab;
 import cn.linchaokun.markdown.ui.panes.AboutPane;
 import cn.linchaokun.markdown.ui.panes.OptionsPane;
+import cn.linchaokun.markdown.utils.SystemUtil;
 import cn.linchaokun.markdown.utils.Utilities;
 import cn.linchaokun.markdown.utils.VariablesToSave;
 import com.jfoenix.controls.*;
@@ -34,6 +35,9 @@ public class IndexController implements Initializable {
 
     private XML xml;
 
+    private static JFXDecorator jfDecorator;
+
+
     private static String colorStr;
     @FXML
     public JFXDrawersStack drawersStack;
@@ -59,7 +63,7 @@ public class IndexController implements Initializable {
 
     private void loadXMLValues() {
         try {
-            xml = new XML("jmarkpad.xml");
+            xml = new XML("/"+SystemUtil.getUserHome() +"/jmarkpad.xml");
 
             stage.setWidth(Double.valueOf(xml.loadVariable("width")));
             stage.setHeight(Double.valueOf(xml.loadVariable("height")));
@@ -86,9 +90,9 @@ public class IndexController implements Initializable {
             e.printStackTrace();
 
         } catch (NullPointerException e) {
-            colorTheme = new Color((double) 0 / 255, (double) 151 / 255,
-                    (double) 167 / 255, 1);
-            System.err.println("\"jmarkpad.xml\" file not found. Creating...");
+            colorTheme = new Color(0.3921568691730499,
+                    0.7098039388656616,
+                    0.9647058844566345, 1);
         }
     }
 
@@ -146,6 +150,10 @@ public class IndexController implements Initializable {
         menuBar.setStyle("-fx-background-color: " + colorThemeString + ";");
         tabPane.setStyle("tab-header-background: " + colorThemeStringBrighter + ";");
 
+        if(jfDecorator!=null){
+            jfDecorator.setStyle("-fx-decorator-color: " + colorStr + ";");
+        }
+
 
         for (int i = 0; i < tabPane.getTabs().size(); i++) {
             ((MyTab) tabPane.getTabs().get(i)).updateButtonColor(colorTheme);
@@ -154,6 +162,8 @@ public class IndexController implements Initializable {
 
     public static void refreshThemeDecorator(JFXDecorator decorator){
         decorator.setStyle("-fx-decorator-color: " + colorStr + ";");
+        jfDecorator = decorator;
+
     }
 
     private boolean isFileIsAlreadyOpen(String filePath) {

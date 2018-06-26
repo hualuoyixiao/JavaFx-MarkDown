@@ -75,6 +75,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <vendor>linchaokun.cn</vendor>
+                    <mainClass>cn.linchaokun.markdown.MarkdownApplication</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
